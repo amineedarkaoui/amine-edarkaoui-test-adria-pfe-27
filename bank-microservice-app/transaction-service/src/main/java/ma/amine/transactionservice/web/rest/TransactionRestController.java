@@ -2,7 +2,9 @@ package ma.amine.transactionservice.web.rest;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import ma.amine.transactionservice.domain.AccountDTO;
 import ma.amine.transactionservice.domain.Transaction;
+import ma.amine.transactionservice.service.AccountServiceClient;
 import ma.amine.transactionservice.service.TransactionService;
 import ma.amine.transactionservice.web.rest.dto.CreateTransactionRequest;
 import ma.amine.transactionservice.web.rest.dto.TransferTransactionRequest;
@@ -29,6 +31,13 @@ import java.util.UUID;
 public class TransactionRestController {
 
     private final TransactionService transactionService;
+    private final AccountServiceClient accountServiceClient;
+
+    @GetMapping("/remote-account/{id}")
+    public ResponseEntity<AccountDTO> getRemoteAccount(@PathVariable UUID id) {
+        log.info("REST: Querying remote account {} via OpenFeign", id);
+        return ResponseEntity.ok(accountServiceClient.getAccountById(id));
+    }
 
     @PostMapping
     public ResponseEntity<Transaction> recordTransaction(@RequestBody CreateTransactionRequest request) {

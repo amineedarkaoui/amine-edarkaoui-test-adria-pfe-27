@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.Map;
 import java.util.UUID;
 
-@FeignClient(name = "account-service")
+@FeignClient(name = "account-service", url = "${account.service.url:http://localhost:8080}")
 public interface AccountServiceClient {
 
     @GetMapping("/accounts/{id}")
