@@ -1,0 +1,31 @@
+# Exam Subject PDF
+Test ADRIA ENSET 2027.pdf
+
+# Intermediate build files
+rapport.html
+
+# Maven & Build outputs
+target/
+**/target/
+build/
+**/build/
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE / Editor configuration
+.idea/
+**/.idea/
+*.iml
+**/*.iml
+*.iws
+*.ipr
+.vscode/
+**/.vscode/
+.classpath
+.project
+.settings/
+.factorypath
+
+# OS and system files
+.DS_Store
+Thumbs.db
+*.log
